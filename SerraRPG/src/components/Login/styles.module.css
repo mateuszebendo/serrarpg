@@ -1,0 +1,39 @@
+.formContainer {
+    width: 300px;
+}
+
+.formTitle {
+    color: antiquewhite;
+    font-family: Vecna;
+    font-size: 50px;
+}
+
+.formLogin {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bottomInputContent {
+    padding-top: 5px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: antiquewhite;
+}
+
+.checktext {
+    margin-right: 38px;
+    font-family: Vecna;
+}
+
+.passwordForgot {
+    text-decoration: none;
+    color: #FF9900;
+    font-family: Vecna;
+    font-weight: bold;
+
+}
+
+

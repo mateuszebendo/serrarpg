@@ -1,0 +1,24 @@
+.inputContainer {
+    width: 100%;
+    padding-top: 2px;
+}
+
+.nameInput {
+    width: 125px;
+    height: 90px;
+    font-family: Vecna;
+    color: antiquewhite;
+    font-weight: normal;
+    font-size: 25px;
+}
+.inputContent {
+    width: 278px;
+    height: 35px;
+    background-color: antiquewhite;
+    margin: 0.125rem 0;
+    font-family: Vecna;
+    font-size: 25px;
+    padding: 10px;
+
+
+}
