@@ -1,12 +1,12 @@
 import React from 'react'; 
 import Navbar from '../../components/Navbar';
-import { Outlet } from 'react-router-dom';
+import Ficha from '../Fichas';
 
-export default function Home(){
+export default function App(){
     return(
         <>
         <Navbar/>
-        <Outlet />
+        <Ficha />
         </>
     );
 }
