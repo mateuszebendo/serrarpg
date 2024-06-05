@@ -5,3 +5,13 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+@font-face {
+  font-family: Zelda;
+  src: url(./src/assets/fonts/TheWildBreathOfZelda-15Lv.ttf);
+}
+
+@font-face {
+  font-family: Vecna;
+  src: url(./src/assets/fonts/Vecna-oppx.ttf);
+}

@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 14.5rem;
+  height: 5.875rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0rem 0rem 2.0625rem 2.0625rem;
+  padding: 0;
+}
+
+.btn {
+  width: 13rem;
+  height: 4.75rem;
+  border-radius: 0rem 0rem 2.25rem 2.25rem;
+  background-color: rgba(34, 34, 34, 0.4);
+  padding-top: .625rem;
+  font-family: Zelda;
+  font-size: 2.375rem;
+  color: rgb(255,153,0);
+}
+
+.container:hover{
+  transform: scale(1.1);
+  background-color: rgb(255,153,0);
+  color: white;
+}
+
+.container:hover > .btn  {
+  color: white;
+}
+
+.container, .btn {
+  cursor: pointer;
+  transition: 0.3s;
+  border: none;
+}
