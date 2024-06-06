@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import SignUp from '../Buttons';
 import styles from './styles.module.css';
 
-function Cadastro() {
+function CadastroForm() {
 
     async function handleSignIn(e) {
         e.preventDefault();
@@ -29,4 +29,4 @@ function Cadastro() {
     );
 }
 
-export default Cadastro;
+export default CadastroForm;
