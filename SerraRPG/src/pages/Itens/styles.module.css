@@ -1,0 +1,73 @@
+*{
+    font-family: Vecna;
+    margin: 0;
+    padding: 0;
+}
+
+div h1{
+    margin: 0.8rem;
+}
+
+.geral{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.itens{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 30%;
+    border-radius: 20px;
+    
+    margin-top: 5rem;
+
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.opcoes{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.descricao{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-height: 40rem;
+
+    width: 45%;
+    border-radius: 20px;
+    margin-top: 5rem;
+
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.anotacao{
+    border-radius: 20px;
+    width: 80%;
+    height: 10%;
+
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-evenly;
+    overflow-y: scroll;
+    margin-bottom: 4rem;
+
+    font-size: 20px;
+    color: black;
+    background-color: antiquewhite;
+}
+
+.infoapi{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-evenly;
+    overflow-y: scroll;
+    height: inherit;
+}

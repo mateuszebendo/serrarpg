@@ -1,4 +1,4 @@
-.butt {
+.butt{
     width: 80%;
     margin: 1.5rem;
     padding: 6px;
@@ -10,10 +10,11 @@
     font-size: 2rem;
     font-family: Vecna;
 }
-.butt2 {
+.butt2{
     width: 80%;
     margin: 1.5rem;
     padding: 6px;
+    color: white;
     background-color: orange;
 
     border: hidden;
@@ -27,11 +28,11 @@
     cursor: pointer;
     transition-duration: 175ms;
     background-color: orange;
-    color: black;
+    color: white;
 }
-.butt2:hover{
+.butt:focus{
     cursor: pointer;
     transition-duration: 175ms;
     background-color: orange;
-    color: black;
+    color: white;
 }
