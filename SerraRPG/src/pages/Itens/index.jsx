@@ -1,29 +1,30 @@
 import React from 'react'
 import Button from '../../components/Buttons';
 import style from './styles.module.css'
-//import { getArmor } from "../../services/DndApi/api";
+import Objetos from './Objetos'
+import Navbar from '../../components/Navbar'
+import { getArmor } from "../../services/DndApi/api";
 import { useState, useEffect } from 'react';
 import { get, set } from 'firebase/database';
 
 export default function Itens() {
-    /*const [armorList, setArmorList] = useState({});
+    const [lista, setList] = useState([]);
 
     useEffect(()=>{
         getArmorApi();
     },[]);
 
     async function getArmorApi() {
-        try {
-            const result = await getArmor();
-            setArmorList(result.data.result);
-        }catch {
-            console.log('deu erro')
-        }
-        console.log(armorList)
-    }*/
+        
+        const results = await getArmor();
+        setList(results.data.equipment);
+
+    }
+    console.log(lista)
     
     return (
         <>
+            <Navbar />
             <div className={style.geral}>
                 <div className={style.itens}>
                     <h1>Itens</h1>
@@ -37,10 +38,11 @@ export default function Itens() {
                 <div className={style.descricao}>
                     <h1>Descrição</h1>
                     <div className={style.anotacao}>
-                        Coloca oq quer aqui
-                        Coloca oq quer aqui
-                        Coloca oq quer aqui
-                        Coloca oq quer aqui
+                        {
+                        lista.map((name , index) => {
+                            return <Objetos key={index} name={name}/>
+                        })
+                        }
                     </div>
                 </div>
             </div>
