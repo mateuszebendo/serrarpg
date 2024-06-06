@@ -1,0 +1,40 @@
+.bodyContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bodyContent {
+    width: 1280px;
+    padding: 3.125rem 9.375rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.textContent {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.title {
+    margin-top: 0;
+    font-family: Zelda;
+    color: #FF9900;
+    font-size: 100px;
+    text-shadow: #000 1px 1px;
+}
+
+.subtitle {
+    width: 440px;
+    font-family: Vecna;
+    font-size: 35px;
+    color: antiquewhite;
+    text-align: center;
+    flex-wrap: wrap;
+    text-shadow: #000 1px 1px;
+}

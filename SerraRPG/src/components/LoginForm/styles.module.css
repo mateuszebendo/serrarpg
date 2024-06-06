@@ -33,7 +33,18 @@
     color: #FF9900;
     font-family: Vecna;
     font-weight: bold;
+}
 
+.spanContent {
+    font-family: Vecna;
+    color: antiquewhite;
+}
+
+.linkContent {
+    text-decoration: none;
+    color: #FF9900;
+    font-family: Vecna;
+    font-weight: bold;
 }
 
 
