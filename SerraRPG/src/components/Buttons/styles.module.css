@@ -1,0 +1,37 @@
+.butt {
+    width: 80%;
+    margin: 1.5rem;
+    padding: 6px;
+    background-color: antiquewhite;
+
+    border: hidden;
+    border-radius: 6px;
+
+    font-size: 2rem;
+    font-family: Vecna;
+}
+.butt2 {
+    width: 80%;
+    margin: 1.5rem;
+    padding: 6px;
+    background-color: orange;
+
+    border: hidden;
+    border-radius: 6px;
+
+    font-size: 2rem;
+    font-family: Vecna;
+}
+
+.butt:hover{
+    cursor: pointer;
+    transition-duration: 175ms;
+    background-color: orange;
+    color: black;
+}
+.butt2:hover{
+    cursor: pointer;
+    transition-duration: 175ms;
+    background-color: orange;
+    color: black;
+}
