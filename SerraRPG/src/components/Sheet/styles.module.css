@@ -1,0 +1,76 @@
+.sheet {
+    height: auto;
+    width: auto;
+    background: #e2d7c2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1),
+                0 5px 10px rgba(0, 0, 0, 0.2),
+                0 10px 20px rgba(0, 0, 0, 0.3);
+    padding: 2.5rem;
+    font-family: Vecna;
+    overflow-y: scroll;
+}
+
+.atributos {
+    border: solid;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.informacoes {
+    display: flex;
+    flex-direction: row;
+}
+
+.dados {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    border: solid;
+    width: auto;
+    padding: 1rem;
+}
+
+.dadosAlternativos {
+    border: solid;
+    height: auto;
+    width: auto;
+    border: solid;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.dados > img {
+    width: 15rem;
+    height: 15rem;
+    border: 1rem solid #484646;
+    border-radius: 5px;
+}
+
+.tipo {
+    color: rgb(60, 7, 7);
+    border-top: solid rgb(60, 7, 7);
+    border-bottom: solid rgb(60, 7, 7);
+    text-align: center;
+}
+
+.sheet > input {
+    margin: 1rem 0;
+    padding: 0 0.5rem;
+}
+
+.sheet > label {
+    font-size: 1.4rem;
+}
+
+.campo {
+    height: 1.5rem;
+    width: 11rem;
+    background-color: #f0f0f0;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
