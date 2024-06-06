@@ -1,17 +1,17 @@
 import axios from 'axios';
 
-const api = axios.create({
-    baseURL: 'https://www.dnd5eapi.co/'
+const apiDnd = axios.create({
+    baseURL: 'https://www.dnd5eapi.co/api/'
 });
 
-export const getRaca = () => {
-    const url = 'races/';
-
-    try {
-        return apiDnd.get(url)
-    } catch {
-        console.log('deu erro');
-    }
+export function getRacas() {
+    const url = 'races';
+    return apiDnd.get(url)
 }
 
-export default api;
+export function getClasses() {
+    const url = 'classes';
+    return apiDnd.get(url)
+}
+
+export default apiDnd;

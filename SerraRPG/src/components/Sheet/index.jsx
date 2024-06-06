@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styles from './styles.module.css'
 import Atributo from './Atributos';
 import icone from '../../assets/iconePessoa.png'
+import Select from '../Select';
 
 export default function Sheet(props) {
     const [imagem, setImagem] = useState(icone);
@@ -71,19 +72,21 @@ export default function Sheet(props) {
 
                     <section styles={styles.dadosAlternativos}>
                         <h3>Atributos Secundários</h3>
-                        <Atributo nome="Vida" />
-                        <Atributo nome="CA" valor={ca} desativado="true" />
-                        <Atributo nome="Iniciativa" desativado="true" />
-                        <Atributo nome="Movimento" desativado="true" />
-                        <Atributo nome="Raça" />
-                        <Atributo nome="Classe" />
+                        <div>
+                        <Atributo nome="Vida Total" desativado={true}/>
+                        <Atributo nome="Vida Atual"  tipo="number"/>
+                        </div>
+                        <Atributo nome="CA" valor={ca} desativado={true} />
+                        <Atributo nome="Iniciativa" desativado={true} />
+                        <Atributo nome="Movimento" desativado={true} />
+                        <Atributo nome="Nível" tipo="number" />
                     </section>
                 </section>
                 <section className={styles.dados}>
                     <img src={imagem} alt="foto da ficha" />
                     <Atributo nome="Nome" />
-                    <Atributo nome="Raça" />
-                    <Atributo nome="Classe" />
+                    <Select nome="Raça" tipo="race"/>
+                    <Select nome="Classe" tipo="classes"/>
                 </section>
             </div>
 

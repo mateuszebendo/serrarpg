@@ -6,7 +6,7 @@ function Input({label, tipo}) {
 
     return (
         <div className={styles.inputContainer}>
-            <label className={styles.nameInput} for="input">{label}</label>
+            <label className={styles.nameInput} htmlFor="input">{label}</label>
             <input className={styles.inputContent}
                 name="input"
                 type={tipo}
