@@ -7,33 +7,36 @@ import Fichas from '../../pages/Fichas';
 import Monstros from '../../pages/Monstros';
 import Itens from '../../pages/Itens';
 import Habilidades from '../../pages/Habilidades';
-  
+
   export const router = createBrowserRouter([
     {
       path: "/",
       element: <Home />,
-      errorElement: <ErrorPage />,
-      children: [
-        {
-          path: "cadastro",
-          element: <Cadastro />
-        },
-        {
-          path: "fichas",
-          element: <Fichas />
-        },
-        {
-          path: "monstros",
-          element: <Monstros />
-        },
-        {
-          path: "itens",
-          element: <Itens />
-        },
-        {
-          path: "habilidades",
-          element: <Habilidades />
-        },
-      ]
+      errorElement: <ErrorPage />
+    },
+    {
+      path: "cadastro",
+      element: <Cadastro />,
+      errorElement: <ErrorPage />
+    },
+    {
+      path: "fichas",
+      element: <Fichas />,
+      errorElement: <ErrorPage />
+    },
+    {
+      path: "monstros",
+      element: <Monstros />,
+      errorElement: <ErrorPage />
+    },
+    {
+      path: "itens",
+      element: <Itens />,
+      errorElement: <ErrorPage />
+    },
+    {
+      path: "habilidades",
+      element: <Habilidades />,
+      errorElement: <ErrorPage />
     }
   ])

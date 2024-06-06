@@ -1,14 +1,12 @@
 import React from 'react';
 import Navbar from '../../components/Navbar';
 import  Login  from '../../components/LoginForm';
-import { Outlet } from 'react-router-dom';
 import styles from './styles.module.css';
 
 export default function Home(){
     return(
         <>
-        <Navbar/>
-        <Outlet />
+        <Navbar />
         <div className={styles.bodyContainer}>
             <div className={styles.bodyContent}>
                 <Login />
