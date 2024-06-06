@@ -1,5 +1,5 @@
 .sheet {
-    height: auto;
+    max-height: 35rem;
     width: auto;
     background: #e2d7c2;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1),
@@ -9,7 +9,6 @@
     font-family: Vecna;
     overflow-y: scroll;
 }
-
 .atributos {
     height: auto;
     display: flex;
@@ -52,6 +51,7 @@
     border-top: solid rgb(60, 7, 7);
     border-bottom: solid rgb(60, 7, 7);
     text-align: center;
+    margin: 0.5rem;
 }
 
 .sheet > input {

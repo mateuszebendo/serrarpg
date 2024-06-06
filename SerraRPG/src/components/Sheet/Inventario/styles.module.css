@@ -1,0 +1,49 @@
+.inventario {
+    margin: 0.5rem;
+    color: rgb(60, 7, 7);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    width: auto; 
+    height: auto;
+}
+
+.topo {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.inventario > div {
+    background-color: white;
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap:nowrap ;
+    width: auto;
+    max-height: 10rem;
+    overflow-y: scroll;
+    border: none;
+    border-radius: 10px;
+    overflow-y: scroll;
+}
+
+.btn {
+    width: 10rem;
+    margin-left: 0.5rem;
+    border: none;
+    border-radius: 10px;
+}
+
+.lista {
+    max-height: 5rem;
+    padding: 1rem;
+}
+
+button:hover{
+    transform: scale(1.1);
+    background-color: rgb(255,153,0);
+    color: white;
+  }
