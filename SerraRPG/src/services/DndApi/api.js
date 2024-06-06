@@ -8,16 +8,6 @@ const apiDndItem = axios.create({
     baseURL: 'https://www.dnd5eapi.co/api/equipment/'
 });
 
-<<<<<<< Updated upstream
-export function getItem(url){
-    try {
-        return apiDndItem.get(url)
-    } catch (error) {
-        console.error('Erro ao obter dados da API:', error);
-    }
-}
-
-=======
 export const getArmor = () => {
 
     const url = 'equipment-categories/armor';
@@ -37,7 +27,6 @@ export function getItem(url){
     }
 }
 
->>>>>>> Stashed changes
 export function getAll(url) {
     try {
         return apiDnd.get(url)
