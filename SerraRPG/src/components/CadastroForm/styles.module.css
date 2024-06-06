@@ -1,0 +1,29 @@
+.formContainer {
+    width: 300px;
+}
+
+.formTitle {
+    color: antiquewhite;
+    font-family: Vecna;
+    font-size: 50px;
+}
+
+.formLogin {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.spanContent {
+    font-family: Vecna;
+    color: antiquewhite;
+}
+
+.linkContent {
+    text-decoration: none;
+    color: #FF9900;
+    font-family: Vecna;
+    font-weight: bold;
+}
+
+
