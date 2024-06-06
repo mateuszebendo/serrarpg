@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './styles.module.css';
 
 export default function Atributo(props){
+    
     if(props.modificador != undefined){
     return(
         <section className={styles.atributo}>
