@@ -1,0 +1,119 @@
+* {
+  font-family: Vecna;
+}
+
+.card, .card svg, .card label {
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.card, .description{
+  width: 27.5rem;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  column-gap: 3.125rem;
+  height: 1.875rem;
+  padding-right: .375rem;
+  background-color: rgba(217, 217, 217, 1);
+  border: none;
+  border-radius: .125rem;
+}
+
+
+.card svg {
+  font-size: 1.5rem;
+  border-radius: 50%;
+}
+
+.card:hover {
+  background-color: antiquewhite;
+}
+
+.card:focus{
+  background-color: rgb(255,153,0);
+}
+
+.card:focus svg{
+  color: white;
+  transform: rotate(180deg);
+}
+
+.card:focus label {
+  color: white;
+}
+
+.card label {
+  font-size: 1.875rem;
+  height: 1.5rem;
+  margin-bottom: 7%;
+  align-self: center;
+}
+
+.anglesDiv {
+  height: 1.5rem;
+}
+
+.labelDiv {
+  display: flex;
+  width: fit-content;
+  justify-content: center;
+  width: 18.75rem;
+  margin-left: 2.5rem;
+}
+
+.description {
+  background-color: rgba(217, 217, 217, 1);
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
+  visibility: hidden;
+}
+
+.description ul {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+  margin-top: 18px;
+  width: 400px;
+}
+
+.card:focus ~ .description{
+  animation-name: descAnimation;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  visibility: visible;
+}
+
+.card:focus ~ .description ul {
+  animation-name: descText;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}
+
+.description li {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+@keyframes descAnimation {
+  0% {
+    height: 0px;
+  }
+  100% {
+    height: fit-content;
+  }
+}
+
+@keyframes descText {
+  0% {
+    font-size: 0px;
+  }
+  100% {
+    font-size: 19px;
+  }
+}
