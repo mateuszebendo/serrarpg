@@ -19,6 +19,39 @@ export const getArmor = () => {
     }
 }
 
+export const getWeapons = () => {
+
+    const url = 'equipment-categories/weapon';
+
+    try{
+        return apiDnd.get(url);
+    }catch{
+        console.log('deu erro');
+    }
+}
+
+export const getRules = () => {
+
+    const url = 'rule-sections';
+
+    try{
+        return apiDnd.get(url);
+    }catch{
+        console.log('deu erro');
+    }
+}
+
+export const getRulesById = (id) => {
+    
+    const url = 'rule-sections/'+{id};
+    console.log(url);
+    try{
+        return apiDnd.get(url);
+    }catch{
+        console.log('deu erro');
+    }
+}
+
 export function getItem(url){
     try {
         return apiDndItem.get(url)
