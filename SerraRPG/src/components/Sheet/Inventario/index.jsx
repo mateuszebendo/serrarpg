@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import Item from '../../Item';
-import Select from '../../Select';
+import Item from '../Item';
+import Select from '../Select';
 import styles from './styles.module.css'
 
 export default function Inventario(props) {

@@ -1,5 +1,6 @@
 .sheet {
     max-height: 35rem;
+    height: 200px;
     width: auto;
     background: #e2d7c2;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1),
@@ -8,13 +9,6 @@
     padding: 2.5rem;
     font-family: Vecna;
     overflow-y: scroll;
-}
-.atributos {
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    padding: 0 2rem;
 }
 
 .informacoes {
@@ -30,15 +24,6 @@
     padding: 1rem;
 }
 
-.dadosAlternativos {
-    height: auto;
-    width: auto;
-    border: solid;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-}
-
 .dados > img {
     width: 15rem;
     height: 15rem;
@@ -52,22 +37,4 @@
     border-bottom: solid rgb(60, 7, 7);
     text-align: center;
     margin: 0.5rem;
-}
-
-.sheet > input {
-    margin: 1rem 0;
-    padding: 0 0.5rem;
-}
-
-.sheet > label {
-    font-size: 1.4rem;
-}
-
-.campo {
-    height: 1.5rem;
-    width: 11rem;
-    background-color: #f0f0f0;
-    outline: none;
-    border: none;
-    border-radius: 5px;
 }

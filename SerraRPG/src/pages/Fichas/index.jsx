@@ -5,8 +5,8 @@ import styles from './styles.module.css';
 export default function Fichas(){
 
     return(
-        <main className={styles.container}>
+        <div className={styles.container}>
          <Sheet tipoFicha="Personagem"/>
-        </main >
+        </div >
     );
 }

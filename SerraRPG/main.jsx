@@ -4,17 +4,17 @@ import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 import RoutesApp from './src/utils/router'
 import AuthProvider from './src/contexts/auth';
-import SheetInfoProvider from './src/contexts/SheetContext';
+import SheetInfoProvider from './src/contexts/SheetContext.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).
-render(
-  <React.StrictMode>
-    <SheetInfoProvider>
-    <BrowserRouter>
-      <AuthProvider>
-        <RoutesApp />
-      </AuthProvider>
-    </BrowserRouter>
-    </SheetInfoProvider>
-  </React.StrictMode>
-)
+  render(
+    <React.StrictMode>
+      <SheetInfoProvider>
+        <AuthProvider>
+          <BrowserRouter>
+            <RoutesApp />
+          </BrowserRouter>
+        </AuthProvider>
+      </SheetInfoProvider>
+    </React.StrictMode>
+  )

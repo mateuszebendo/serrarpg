@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getAll } from '../../services/DndApi/api';
+import { getAll } from '../../../services/DndApi/api';
 import styles from './styles.module.css';
 
 export default function Select(props) {
