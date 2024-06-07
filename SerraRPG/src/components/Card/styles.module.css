@@ -2,6 +2,7 @@
   font-family: Vecna;
 }
 
+
 .card, .card svg, .card label {
   transition: 0.3s;
   cursor: pointer;
@@ -20,7 +21,8 @@
   padding-right: .375rem;
   background-color: rgba(217, 217, 217, 1);
   border: none;
-  border-radius: .125rem;
+  border-radius: 0.125rem;
+  margin-top: 1.5rem;
 }
 
 
@@ -30,7 +32,7 @@
 }
 
 .card:hover {
-  background-color: antiquewhite;
+  background-color: rgb(255,153,0);
 }
 
 .card:focus{
@@ -47,9 +49,9 @@
 }
 
 .card label {
-  font-size: 1.875rem;
+  font-size: 1.5rem;
   height: 1.5rem;
-  margin-bottom: 7%;
+  margin-bottom: 2%;
   align-self: center;
 }
 
@@ -59,37 +61,37 @@
 
 .labelDiv {
   display: flex;
-  width: fit-content;
   justify-content: center;
   width: 18.75rem;
-  margin-left: 2.5rem;
+  margin-left: 1.5rem;
 }
 
 .description {
   background-color: rgba(217, 217, 217, 1);
-  display: flex;
+  display: none;
   justify-content: start;
   align-items: start;
   flex-direction: column;
-  visibility: hidden;
 }
 
 .description ul {
-  display: flex;
+  display: none;
   flex-direction: column;
   margin-left: 30px;
   margin-top: 18px;
   width: 400px;
 }
 
-.card:focus ~ .description{
+.card:focus + .description{
+  display: flex;
   animation-name: descAnimation;
   animation-duration: 1s;
   animation-fill-mode: forwards;
   visibility: visible;
 }
 
-.card:focus ~ .description ul {
+.card:focus + .description ul {
+  display: flex;
   animation-name: descText;
   animation-duration: 1.5s;
   animation-fill-mode: forwards;
