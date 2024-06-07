@@ -48,7 +48,7 @@ function AuthProvider({ children }) {
             setUser(data);
             storageUser(data);
             setLoadingAuth(false);
-            alert("Bem-vindo(a) Mestre(a)!");
+            alert("Bem-vindo(a) ao Serra RPG!");
             navigate("../itens")
         })
         .catch((error) => {
