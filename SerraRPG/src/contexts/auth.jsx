@@ -34,7 +34,7 @@ function AuthProvider({ children }) {
 
         await signInWithEmailAndPassword(auth, email, password)
         .then(async(value) => {
-            let uid = value.user.uid
+            let uid = value.user.uid;
 
             const docRef = doc(db, "users", uid);
             const docSnap = await getDoc(docRef)
@@ -43,14 +43,13 @@ function AuthProvider({ children }) {
                 uid: uid,
                     nome: docSnap.data().nome,
                     email: value.user.email,
-                    avatarUrl: docSnap.data().avatarUrl
             }
 
             setUser(data);
             storageUser(data);
             setLoadingAuth(false);
-            toast.success("Bem-vindo(a) de volta ao SERRA RPG!");
-            navigate("/itens")
+            alert("Bem-vindo(a) Mestre(a)!");
+            navigate("../itens")
         })
         .catch((error) => {
             console.log(error);
@@ -68,21 +67,19 @@ function AuthProvider({ children }) {
 
             await setDoc(doc(db, "users", uid), {
                 nome: newUser,
-                avatarUrl: null
             })
             .then(() => {
                 let data = {
                     uid: uid,
                     nome: newUser,
                     email: value.user.email,
-                    avatarUrl: null
                 };
 
                 setUser(data);
                 storageUser(data);
                 setLoadingAuth(false);
-                alert("Seja bem vindo ao SERRA RPG!");
-                navigate("/itens")
+                alert("Mestre cadastrado com sucesso!")
+                navigate('/')
 
             })
 

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../../contexts/auth';
 import  Input  from '../Input';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import SignUp from '../Buttons';
 import styles from './styles.module.css';
 
@@ -9,6 +9,7 @@ function CadastroForm() {
     const[newUser, setNewUser] = useState('');
     const[email, setEmail] = useState('');
     const[password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const {cadastrar, loadingAuth} = useContext(AuthContext);
 
@@ -25,7 +26,7 @@ function CadastroForm() {
     return(
         <div className={styles.formContainer}>
             <form className={styles.formLogin} onSubmit={handleCadastrar}>
-                <h1 className={styles.formTitle}>Cadastrar-se</h1>
+                <h1 className={styles.formTitle}>Cadastrar</h1>
                 <Input
                     label="Novo usuário"
                     type="text"
@@ -43,7 +44,7 @@ function CadastroForm() {
                     label="Senha"
                     type="password"
                     value={password}
-                    autoComplete="current-password"
+                    autoComplete="auto-complete"
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <SignUp title="Cadastrar" type="Submit">{loadingAuth ? 'Carregando...' : 'Cadastrar'}</SignUp>
