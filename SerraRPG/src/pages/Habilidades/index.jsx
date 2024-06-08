@@ -7,43 +7,56 @@ import Card from "../../components/Card"
 import { getSpells, getClasses } from "../../services/DndApi/api";
 import { useState, useEffect } from 'react';
 import { get, set } from 'firebase/database';
+import SearchBar from '../../components/SearchBar';
 
 export default function Habilidades(){
     const [lista, setList] = useState([]);
-    const [itemDesc, setItemDesc] = useState([]);
+    const[search, setSearch] = useState('');
+    const[filteredList, setFilteredList] = useState([]);
 
     async function getSpellsApi() {
         const results = await getSpells();
         setList(results.data.results);
+        setFilteredList(results.data.results);
         }
 
     async function getClassesApi() {
         const results = await getClasses();
         setList(results.data.results);
+        setFilteredList(results.data.results);
         }
 
-        console.log(lista);
+        function pesquisa() {
+            const filtered = lista.filter(e => e.name.toLowerCase().includes(search.toLowerCase()));
+            setFilteredList(filtered);
+        }
+
+        useEffect(() => {
+            pesquisa()
+        },[search])
+
     return(
         <>
             <Navbar />
             <div className={style.geral}>
                 <div className={style.itens}>
-                    <h1>Itens</h1>
+                    <h1>Habilidades</h1>
                     <div className={style.opcoes}>
-                    <Searchbar/>
                         <Button title='Habilidade de classe' onClick={getClassesApi}/>
                         <Button title='Magias' onClick={getSpellsApi}/>
                     </div>
                     <br />
                 </div>
                 <div className={style.descricao}>
-                    <Searchbar/>
+                    <SearchBar onChange={e => setSearch(e.target.value)}/>
                     <div className={style.anotacao}>
                     {
-                        lista.map((index) => {
+                    filteredList.length > 0 ?
+                        filteredList.map((index) => {
                             return <Card key={index} title={index}/>
                         })
-                        }
+                     : <p>Escolha uma opção</p>
+                    }
                     </div>
                 </div>
             </div>
