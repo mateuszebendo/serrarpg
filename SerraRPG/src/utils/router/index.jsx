@@ -7,6 +7,7 @@ import Monstros from '../../pages/Monstros';
 import Itens from '../../pages/Itens';
 import Habilidades from '../../pages/Habilidades';
 import ErrorPage from '../../pages/ErrorPage';
+import PasswordForgot from '../../pages/PasswordForgot';
 import Private from './Private';
 
   function RoutesApp() {
@@ -14,12 +15,13 @@ import Private from './Private';
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cadastro" element={<Cadastro />} />
-        
+        <Route path="/password-forgot" element={<PasswordForgot />} />
+
         <Route path="/fichas" element={<Private><Fichas /></Private>} />
         <Route path="/monstros" element={<Private><Monstros /></Private>} />
         <Route path="/itens" element={<Private><Itens /></Private>} />
         <Route path="/habilidades" element={<Private><Habilidades /></Private>}/>
-        
+
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     );

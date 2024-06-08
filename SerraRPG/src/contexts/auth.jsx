@@ -1,6 +1,6 @@
 import React, { useState, createContext, useEffect } from 'react';
 import { auth, db } from '../services/Firebase/firebaseConnection';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateCurrentUser, updatePassword } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
@@ -27,36 +27,8 @@ function AuthProvider({ children }) {
         }
 
         loadUser();
-    }, [])
 
-    async function logar(email, password) {
-        setLoadingAuth(true);
-
-        await signInWithEmailAndPassword(auth, email, password)
-        .then(async(value) => {
-            let uid = value.user.uid;
-
-            const docRef = doc(db, "users", uid);
-            const docSnap = await getDoc(docRef)
-
-            let data = {
-                uid: uid,
-                    nome: docSnap.data().nome,
-                    email: value.user.email,
-            }
-
-            setUser(data);
-            storageUser(data);
-            setLoadingAuth(false);
-            alert("Bem-vindo(a) ao Serra RPG!");
-            navigate("../itens")
-        })
-        .catch((error) => {
-            console.log(error);
-            setLoadingAuth(false);
-            alert("Ops, email ou senha não cadastrados!");
-        })
-    }
+    }, []);
 
     async function cadastrar(newUser, email, password) {
         setLoadingAuth(true);
@@ -94,10 +66,42 @@ function AuthProvider({ children }) {
         localStorage.setItem('@ticketsPRO', JSON.stringify(data))
     }
 
+    async function logar(email, password) {
+        setLoadingAuth(true);
+
+        await signInWithEmailAndPassword(auth, email, password)
+        .then(async(value) => {
+            let uid = value.user.uid;
+
+            const docRef = doc(db, "users", uid);
+            const docSnap = await getDoc(docRef)
+
+            let data = {
+                uid: uid,
+                    nome: docSnap.data().nome,
+                    email: value.user.email,
+            }
+
+            setUser(data);
+            storageUser(data);
+            setLoadingAuth(false);
+            alert("Bem-vindo(a) ao Serra RPG!");
+        })
+        .catch((error) => {
+            console.log(error);
+            setLoadingAuth(false);
+            alert("Ops, email ou senha não cadastrados!");
+        })
+    }
+
     async function logout() {
         await signOut(auth);
         localStorage.removeItem('@ticketsPRO');
         setUser(null);
+    }
+
+    async function alteraSenha(email, password, novaSenha) {
+
     }
 
     return(
@@ -107,10 +111,11 @@ function AuthProvider({ children }) {
             logar,
             cadastrar,
             logout,
+            alteraSenha,
             loadingAuth,
             loading,
             storageUser,
-            setUser
+            setUser,
         }}>
             { children }
         </AuthContext.Provider>
