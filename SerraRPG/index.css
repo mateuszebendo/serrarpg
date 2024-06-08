@@ -23,3 +23,23 @@ body {
   font-family: Vecna;
   src: url(./src/assets/fonts/Vecna-oppx.ttf);
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: antiquewhite;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(255,153,0);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(172, 98, 0);
+}

@@ -48,7 +48,7 @@ div h1{
 }
 
 .anotacao{
-  border-radius: 20px;
+  border-radius: 20px 0 0 20px;
   width: 80%;
   height: 10%;
 
