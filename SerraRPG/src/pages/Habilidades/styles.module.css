@@ -48,7 +48,7 @@ div h1{
 }
 
 .anotacao{
-  border-radius: 20px;
+  border-radius: 20px 0 0 20px;
   width: 80%;
   height: 10%;
 
@@ -57,6 +57,8 @@ div h1{
   flex-direction: column;
   overflow-y: scroll;
   margin-bottom: 4rem;
+  padding-bottom: 1.2rem;
+  padding-top: 0.8rem;
 
   font-size: 20px;
   color: black;

@@ -11,8 +11,6 @@ const Card = ({ title, requirements, description, nivel}) => {
     setFeatures(results.data);
     }
 
-    console.log(title.url)
-
     useEffect(() => {
       getAllId()
     }, [])
