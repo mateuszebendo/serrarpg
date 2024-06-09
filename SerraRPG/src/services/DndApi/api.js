@@ -82,8 +82,8 @@ export function getSpells() {
     }
 }
 
-export function getClasses() {
-    const url = "classes"
+export function getClassesSkills() {
+    const url = "features"
 
     try {
         return apiDnd.get(url);

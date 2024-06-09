@@ -4,7 +4,7 @@ import Navbar from "../../components/Navbar";
 import Button from "../../components/Buttons";
 import Searchbar from "../../components/SearchBar";
 import Card from "../../components/Card"
-import { getSpells, getClasses } from "../../services/DndApi/api";
+import { getSpells, getClassesSkills } from "../../services/DndApi/api";
 import { useState, useEffect } from 'react';
 import { get, set } from 'firebase/database';
 import SearchBar from '../../components/SearchBar';
@@ -13,17 +13,20 @@ export default function Habilidades(){
     const [lista, setList] = useState([]);
     const[search, setSearch] = useState('');
     const[filteredList, setFilteredList] = useState([]);
+    const[cardType, setCardType] = useState("");
 
     async function getSpellsApi() {
         const results = await getSpells();
         setList(results.data.results);
         setFilteredList(results.data.results);
+        setCardType("spells")
         }
 
     async function getClassesApi() {
-        const results = await getClasses();
+        const results = await getClassesSkills();
         setList(results.data.results);
         setFilteredList(results.data.results);
+        setCardType("classesSkills")
         }
 
         function pesquisa() {
@@ -53,7 +56,7 @@ export default function Habilidades(){
                     {
                     filteredList.length > 0 ?
                         filteredList.map((index) => {
-                            return <Card key={index} title={index}/>
+                                return cardType == "classesSkills"? <Card key={index} title={index} firstLine={"Classe: "} secondLine={"Nível: "} thirdLine={"Descrição: "}/> : <Card key={index} title={index} firstLine={"Nível: "} secondLine={"Descrição: "} thirdLine={"Tipo de magia: "}/>
                         })
                      : <p>Escolha uma opção</p>
                     }
