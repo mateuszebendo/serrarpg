@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 
 const Header = ({ title, link, ...rest }) => {
   return (
-    <div className={styles.container}>
-      <Link to={link} {...rest} className={styles.link}>
+    <Link to={link} {...rest} className={styles.link}>
+      <div className={styles.container}>
         <button className={styles.btn}>{title}</button>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 };
 
