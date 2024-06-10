@@ -37,10 +37,9 @@ export const getWeapons = () => {
         console.log('deu erro');
     }
 }
+export const getMagicItems = () => {
 
-export const getRules = () => {
-
-    const url = 'rule-sections';
+    const url = 'magic-items';
 
     try{
         return apiDnd.get(url);
@@ -49,10 +48,10 @@ export const getRules = () => {
     }
 }
 
-export const getRulesById = (id) => {
-    
-    const url = 'rule-sections/'+{id};
-    console.log(url);
+export const getRules = () => {
+
+    const url = 'rule-sections';
+
     try{
         return apiDnd.get(url);
     }catch{
