@@ -9,42 +9,12 @@
     font-family: Vecna;
     overflow-y: scroll;
 }
-.atributos {
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    padding: 0 2rem;
-}
 
 .informacoes {
     display: flex;
     flex-direction: row;
 }
 
-.dados {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    width: auto;
-    padding: 1rem;
-}
-
-.dadosAlternativos {
-    height: auto;
-    width: auto;
-    border: solid;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-}
-
-.dados > img {
-    width: 15rem;
-    height: 15rem;
-    border: 1rem solid #484646;
-    border-radius: 5px;
-}
 
 .tipo {
     color: rgb(60, 7, 7);
@@ -54,20 +24,19 @@
     margin: 0.5rem;
 }
 
-.sheet > input {
-    margin: 1rem 0;
-    padding: 0 0.5rem;
+
+
+.dados {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    width: auto;
+    padding: 1rem;
 }
 
-.sheet > label {
-    font-size: 1.4rem;
-}
-
-.campo {
-    height: 1.5rem;
-    width: 11rem;
-    background-color: #f0f0f0;
-    outline: none;
-    border: none;
+.dados > img {
+    width: 15rem;
+    height: 15rem;
+    border: 1rem solid #484646;
     border-radius: 5px;
 }

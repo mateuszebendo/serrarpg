@@ -1,17 +1,16 @@
-.atributo {
-    max-width: 19rem;
-    font-size: 1.2rem;
-    margin: 0.4rem 0;
+.atributos {
+    height: auto;
     display: flex;
-    justify-content: space-between;
-    color: rgb(60, 7, 7);
+    flex-direction: column;
+    text-align: center;
+    padding: 0 2rem;
 }
 
-
-
-.campo {
-    text-align: center;
-    border: none; 
-    border-radius: 5px;
-    background-color: #F3F3F3;
+.dadosAlternativos {
+    height: auto;
+    width: auto;
+    border: solid;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
 }

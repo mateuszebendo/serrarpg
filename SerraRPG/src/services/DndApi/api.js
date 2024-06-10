@@ -8,6 +8,10 @@ const apiDndItem = axios.create({
     baseURL: 'https://www.dnd5eapi.co/api/equipment/'
 });
 
+const apiDndSpell = axios.create({
+    baseURL: 'https://www.dnd5eapi.co/api/spells/'
+});
+
 const apiAllById= axios.create({
     baseURL: 'https://www.dnd5eapi.co/'
 });
@@ -59,6 +63,14 @@ export const getRulesById = (id) => {
 export function getItem(url){
     try {
         return apiDndItem.get(url)
+    } catch (error) {
+        console.error('Erro ao obter dados da API:', error);
+    }
+}
+
+export function getSpell(url){
+    try {
+        return apiDndSpell.get(url)
     } catch (error) {
         console.error('Erro ao obter dados da API:', error);
     }

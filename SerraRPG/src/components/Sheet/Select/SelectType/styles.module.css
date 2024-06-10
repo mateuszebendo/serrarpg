@@ -1,0 +1,16 @@
+.container {
+    max-width: 19rem;
+    font-size: 1.2rem;
+    margin: 0.4rem 0;
+    display: flex;
+    justify-content: space-between;
+    color: rgb(60, 7, 7);
+}
+
+.campo {
+    width: 9.8542rem;
+    text-align: center;
+    border: none; 
+    border-radius: 5px;
+    background-color: #F3F3F3;
+}

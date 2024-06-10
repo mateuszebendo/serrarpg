@@ -1,0 +1,27 @@
+{
+    "nome": "",
+    "raca": "",
+    "classe": "",
+    "atributos": {
+        "forca": 10,
+        "destreza": 10,
+        "constituicao": 10,
+        "inteligencia": 10,
+        "sabedoria": 10,
+        "carisma": 10,
+        "modificadores": {
+            "modforca": 0,
+            "moddestreza": 0,
+            "modconstituicao": 0,
+            "modinteligencia": 0,
+            "modsabedoria": 0,
+            "modcarisma": 0
+        }
+    },
+    "inventario": {
+        "itens": [],
+        "magias": [],
+        "habilidades": []
+    },
+    "characterImage": ""
+}

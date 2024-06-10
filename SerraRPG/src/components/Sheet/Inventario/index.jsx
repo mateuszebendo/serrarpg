@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import Item from '../../Item';
-import Select from '../../Select';
+import React, { useState } from 'react'
+import Item from '../Item';
+import Spells from '../Spells';
+import SelectInvetory from '../Select/SelectInvetory';
 import styles from './styles.module.css'
 
 export default function Inventario(props) {
-
     const [listItens, setListItens] = useState([]);
     let item;
 
     function adicionarItem() {
         setListItens([...listItens, item]);
-        vazio = false;
+        
     }
 
     function escolheItem(e) {
@@ -23,14 +23,15 @@ export default function Inventario(props) {
             <h3>{props.nome} </h3>
             <div>
                 <section className={styles.topo}>
-                    <Select nome={props.label} url={props.endpoint} onChange={escolheItem} />
+                    <SelectInvetory nome={props.label} url={props.endpoint} onChange={escolheItem} />
                     <button onClick={adicionarItem} className={styles.btn}>Adicionar</button>
                 </section>
-                <section className={styles.lista}>
+                <section >
 
                     { listItens.length == 0  ? <p>Inventário vazio</p> :
                                 listItens.map(item => {
-                                    return <p><Item index={item} /></p>
+                                    return <div key={item} className={styles.item}>{props.endpoint == 'equipment' ? 
+                                    <Item index={item} /> : <Spells index={item}/>}</div>
                                 })
                     }
 
