@@ -1,0 +1,18 @@
+.popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-width: 12.5rem;
+  max-width: 400px;
+  height: fit-content;
+  min-height: 40px;
+  font-family: Vecna;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 1);
+  position: absolute;
+  background-color: rgba(255,153,0.3, 0.9);
+  border-radius: 12px;
+  padding: 12px;
+}
+

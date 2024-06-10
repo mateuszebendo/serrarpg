@@ -50,14 +50,13 @@ div h1{
 }
 
 .anotacao{
-    border-radius: 20px;
+    border-radius: 20px 0 0 20px;
     width: 80%;
     height: 10%;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    
     overflow-y: scroll;
 
     margin-bottom: 3.5rem;

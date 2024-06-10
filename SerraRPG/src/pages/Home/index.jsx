@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Navbar from '../../components/Navbar';
 import  Login  from '../../components/LoginForm';
 import styles from './styles.module.css';
+import { AuthContext } from '../../contexts/auth';
 
 export default function Home(){
+    const { signed } = useContext(AuthContext);
+
+   if(!signed) {
     return(
-        <>
-        <Navbar />
         <div className={styles.bodyContainer}>
             <div className={styles.bodyContent}>
                 <Login />
@@ -16,6 +18,21 @@ export default function Home(){
                 </div>
             </div>
         </div>
+    );
+   } else if(signed){
+    return(
+        <>
+        <Navbar />
+        <div className={styles.bodyContainer}>
+            <div className={styles.bodyContent}>
+                <div className={styles.textContent}>
+                <h1 className={styles.homeTitle}>Bem-vindo(a) a este santuário de lendas e mistérios!</h1>
+                    <p className={styles.homesubtitle}>Adentrem um reino onde a imaginação não conhece limites e cada um de vocês é herói de sua própria saga. Este é um lugar onde o desconhecido se torna conhecido, onde desafios se transformam em conquistas e onde a união e o espírito de equipe nos guiam em nossa jornada.</p>
+                    <p className={styles.homesubtitle}>Que as suas fichas de personagem estejam sempre a seu favor, que os seus dados rolem com a sorte dos deuses e que as suas histórias sejam contadas por eras a fio. Hoje, vocês não são apenas convidados, mas protagonistas de uma grande aventura.</p>
+                </div>
+            </div>
+        </div>
         </>
     );
+   }
 }

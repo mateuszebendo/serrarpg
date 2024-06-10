@@ -12,6 +12,10 @@ const apiDndSpell = axios.create({
     baseURL: 'https://www.dnd5eapi.co/api/spells/'
 });
 
+const apiAllById= axios.create({
+    baseURL: 'https://www.dnd5eapi.co/'
+});
+
 export const getArmor = () => {
 
     const url = 'equipment-categories/armor';
@@ -77,6 +81,34 @@ export function getAll(url) {
         return apiDnd.get(url)
     } catch (error) {
         console.error('Erro ao obter dados da API:', error);
+    }
+}
+
+export function getSpells() {
+    const url = "spells"
+
+    try {
+        return apiDnd.get(url);
+    } catch (error) {
+        console.error('Erro ao obter dados de API:', error);
+    }
+}
+
+export function getClassesSkills() {
+    const url = "features"
+
+    try {
+        return apiDnd.get(url);
+    } catch (error) {
+        console.error('Erro ao obter dados de API:', error);
+    }
+}
+
+export function getAllById(url) {
+    try {
+        return apiAllById.get(url);
+    } catch (error) {
+        console.error('Erro ao obter dados de API:', error);
     }
 }
 

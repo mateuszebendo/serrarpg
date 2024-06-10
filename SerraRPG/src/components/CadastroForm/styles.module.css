@@ -12,6 +12,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 1.25rem;
 }
 
 .spanContent {
@@ -24,6 +25,16 @@
     color: #FF9900;
     font-family: Vecna;
     font-weight: bold;
+}
+
+@keyframes loading {
+    0%{rotate: 0deg;}
+    100%{rotate: 360deg;}
+}
+
+.loadingIcon {
+    animation-name: loading;
+    animation-duration: 3000ms;
 }
 
 

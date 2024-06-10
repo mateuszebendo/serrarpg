@@ -1,15 +1,18 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { AuthContext } from '../../contexts/auth';
 import  Input  from '../Input';
-import {Link, useNavigate} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import SignUp from '../Buttons';
 import styles from './styles.module.css';
+import Popup from '../Popup';
 
 function CadastroForm() {
     const[newUser, setNewUser] = useState('');
     const[email, setEmail] = useState('');
     const[password, setPassword] = useState('');
-    const navigate = useNavigate();
+    const[popupError, setPopupError] = useState(false);
+    const[clicked, setClicked] = useState(false);
 
     const {cadastrar, loadingAuth} = useContext(AuthContext);
 
@@ -19,9 +22,17 @@ function CadastroForm() {
         if(newUser !== '' && email !== '' && password !== '') {
             await cadastrar(newUser, email, password);
         } else {
-            alert("Calma lá mestre!  Todos os campos devem ser preenchidos para criar a sua conta de aventureiro.")
+            setPopupError(true)
         }
     }
+
+    useEffect(() => {
+        if(popupError) {
+            setTimeout(() => {
+                setPopupError(false)
+            }, 4000);
+        }
+    }, [popupError])
 
     return(
         <div className={styles.formContainer}>
@@ -47,10 +58,12 @@ function CadastroForm() {
                     autoComplete="auto-complete"
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <SignUp title="Cadastrar" type="Submit">{loadingAuth ? 'Carregando...' : 'Cadastrar'}</SignUp>
+                <SignUp title={loadingAuth ? <AiOutlineLoading3Quarters className={styles.loadingIcon}/> : 'Cadastrar'} type="Submit"/>
                 <span className={styles.spanContent}>Já tem uma conta? <Link className={styles.linkContent} to="/">Entre</Link></span>
             </form>
-
+            {
+                popupError? <Popup message={"Calma lá mestre!  Todos os campos devem ser preenchidos para criar a sua conta de aventureiro."}></Popup> : null
+            }
         </div>
     );
 }
