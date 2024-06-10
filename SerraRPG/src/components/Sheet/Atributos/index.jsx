@@ -1,19 +1,18 @@
 import React from 'react'
 import styles from './styles.module.css'
-import Select from '../Select';
-import Campo from './campoAtributo';
+import Campo from '../campoAtributo';
 
 export default function Atributos(props) {
     return (
         <section className={styles.atributos}>
             <h3>Atributos</h3>
 
-            <Campo nome="Força" tipo="number" />
-            <Campo nome="Destreza" tipo="number" />
-            <Campo nome="Constituição" tipo="number" />
-            <Campo nome="Inteligência" tipo="number" />
-            <Campo nome="Sabedoria" tipo="number" />
-            <Campo nome="Carisma" tipo="number" />
+            <Campo nome="Força" chave="forca" tipo="number" mod={true}/>
+            <Campo nome="Destreza" chave="destreza" tipo="number" mod={true}/>
+            <Campo nome="Constituição" chave="constituicao" tipo="number" mod={true}/>
+            <Campo nome="Inteligência" chave="inteligencia" tipo="number" mod={true}/>
+            <Campo nome="Sabedoria" chave="sabedoria" tipo="number" mod={true}/>
+            <Campo nome="Carisma" chave="carisma" tipo="number" mod={true}/>
 
             <section styles={styles.dadosAlternativos}>
                 <h3>Atributos Secundários</h3>
@@ -25,12 +24,6 @@ export default function Atributos(props) {
                 <Campo nome="Iniciativa" desativado={true} />
                 <Campo nome="Movimento" desativado={true} />
                 <Campo nome="Nível" tipo="number" />
-            </section>
-            <section className={styles.dados}>
-                <img src={props.imagem} alt="foto da ficha" />
-                <Campo nome="Nome" />
-                <Select nome="Raça" tipo="race" url="races" />
-                <Select nome="Classes" tipo="classes" url="classes" />
             </section>
         </section>
     );

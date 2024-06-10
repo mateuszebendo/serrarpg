@@ -1,3 +1,4 @@
 .container {
     border-top: solid rgb(60, 7, 7);
+    max-width: 30rem;
 }

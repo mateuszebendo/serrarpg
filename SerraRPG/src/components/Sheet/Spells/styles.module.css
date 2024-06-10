@@ -1,0 +1,15 @@
+.container {
+    max-width: 30%;
+    border-top: solid rgb(60, 7, 7);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin: 1rem  0;
+    max-width: 30rem;
+}
+
+.container > p {
+    margin: 1rem  0;
+
+}

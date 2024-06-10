@@ -19,7 +19,7 @@
     background-color: white;
     padding: 0.5rem 0;
     display: flex;
-    justify-content: center;
+    align-items: center;
     flex-direction: column;
     flex-wrap:nowrap ;
     width: auto;
@@ -37,9 +37,8 @@
     border-radius: 10px;
 }
 
-.lista {
-    max-height: 5rem;
-    padding: 1rem;
+.item {
+    margin: 1rem 0;
 }
 
 button:hover{
