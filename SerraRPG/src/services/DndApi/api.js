@@ -16,6 +16,8 @@ const apiAllById= axios.create({
     baseURL: 'https://www.dnd5eapi.co/'
 });
 
+
+
 export const getArmor = () => {
 
     const url = 'equipment-categories/armor';
@@ -106,6 +108,15 @@ export function getClassesSkills() {
 export function getAllById(url) {
     try {
         return apiAllById.get(url);
+    } catch (error) {
+        console.error('Erro ao obter dados de API:', error);
+    }
+}
+
+export function getMonsterList() {
+    const url ='monsters/';
+    try {
+        return apiDnd.get(url);
     } catch (error) {
         console.error('Erro ao obter dados de API:', error);
     }

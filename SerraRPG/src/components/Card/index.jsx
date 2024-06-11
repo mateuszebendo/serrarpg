@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 import { FaAnglesDown } from "react-icons/fa6";
 import { getAllById } from "../../services/DndApi/api";
 
-const Card = ({ title, cardType, firstLine, secondLine, thirdLine }) => {
+const Card = ({ title, cardType, firstLine, secondLine, thirdLine, onClick }) => {
   // const[features, setFeatures] = useState({});
   let features = {};
   const [firstStats, setFirstStats] = useState('');
@@ -53,6 +53,11 @@ const Card = ({ title, cardType, firstLine, secondLine, thirdLine }) => {
         setSecondStats()
         setThirdStats()
         break
+      case "monsters":
+        setFirstStats(JSON.stringify(features.hit_points))
+        setSecondStats(JSON.stringify(features.type))
+        setThirdStats(JSON.stringify(features.size))
+        break;
     }
   }
 
@@ -63,7 +68,7 @@ const Card = ({ title, cardType, firstLine, secondLine, thirdLine }) => {
   }, [cardType])
 
   return <div className={styles.geral}>
-    <button className={styles.card}>
+    <button className={styles.card} onClick={() => onClick(features)}>
       <div className={styles.labelDiv}>
         <label>{title.name}</label>
       </div>
