@@ -17,8 +17,8 @@ export default function Itens() {
         const results = await getWeapons();
         setCardType("weapons");
 
-        setList(results.data.equipment);
-        setFilteredList(results.data.equipment);
+        setList(results.data.equipment)
+        setFilteredList(results.data.equipment)
     }
     async function getMagicItemsApi() {
         const results = await getMagicItems();
@@ -51,9 +51,7 @@ export default function Itens() {
     useEffect(() => {
         pesquisa()
     }, [search])
-
     
-
     return (
         <>
             <Navbar />
@@ -75,6 +73,7 @@ export default function Itens() {
                         {
                             filteredList.length > 0 ?
                                 filteredList.map((index) => {
+                                    
                                     switch (cardType) {
                                         case "weapons":
                                             return <Card key={index} title={index} cardType={cardType} firstLine={"Alcance: "} secondLine={"Dano: "} thirdLine={"Peso: "} />

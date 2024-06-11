@@ -14,8 +14,8 @@ const Card = ({ title, cardType, firstLine, secondLine, thirdLine }) => {
 
   async function getAllId() {
     const results = await getAllById(title.url);
-    // setFeatures(results.data);
     features = results.data;
+    // setFeatures(results.data);
 
     switch (cardType) {
       case "spells":
@@ -30,7 +30,7 @@ const Card = ({ title, cardType, firstLine, secondLine, thirdLine }) => {
         setThirdStats(features.desc)
         break
 
-      case "weapon":
+      case "weapons":
         setFirstStats(JSON.stringify(features.weapon_range))
         setSecondStats(JSON.stringify(features.damage.damage_dice))
         setThirdStats(JSON.stringify(features.weight))
@@ -48,7 +48,7 @@ const Card = ({ title, cardType, firstLine, secondLine, thirdLine }) => {
         setThirdStats(features.desc)
         break
 
-      case "rule":
+      case "rules":
         setFirstStats(features.desc)
         setSecondStats()
         setThirdStats()
@@ -60,7 +60,7 @@ const Card = ({ title, cardType, firstLine, secondLine, thirdLine }) => {
 
   useEffect(() => {
     getAllId()
-  }, [firstLine])
+  }, [cardType])
 
   return <div className={styles.geral}>
     <button className={styles.card}>
