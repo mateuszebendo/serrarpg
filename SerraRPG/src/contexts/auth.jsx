@@ -14,6 +14,13 @@ function AuthProvider({ children }) {
     const navigate = useNavigate();
 
     useEffect(() => {
+        const storedUser = localStorage.getItem('@ticketsPRO');
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
+        }
+    }, []);
+
+    useEffect(() => {
         async function loadUser() {
             const storageUser = localStorage.getItem('@ticketsPRO')
 
@@ -113,6 +120,7 @@ function AuthProvider({ children }) {
             loading,
             storageUser,
             setUser,
+            getStoredUser: () => JSON.parse(localStorage.getItem('@ticketsPRO'))
         }}>
             { children }
         </AuthContext.Provider>

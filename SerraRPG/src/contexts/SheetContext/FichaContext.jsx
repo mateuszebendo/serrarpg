@@ -1,11 +1,12 @@
-import React, { createContext, useState } from 'react';
-import ficha from '../../data/ficha.json';
+import React, { createContext, useState, useEffect } from 'react';
 
 export const FichaContext = createContext();
 
 export default function FichaProvider({ children }) {
-    const [personagens, setPersonagens] = useState([]);
+    const listaPersonagens = localStorage.getItem('@fichas') ? JSON.parse(localStorage.getItem('@fichas')) : [];
+    const [personagens, setPersonagens] = useState(listaPersonagens);
     const [personagemEditado, setPersonagemEditado] = useState(null);
+
 
     function addPersonagem(novoPersonagem) {
         setPersonagens([...personagens, novoPersonagem]);
@@ -14,28 +15,28 @@ export default function FichaProvider({ children }) {
     function alterarPersonagem(personagemAtualizado) {
         setPersonagens(
             personagens.map((personagemAntigo) =>
-            (personagemAntigo.nome === personagemAtualizado.nome ?
+            (personagemAntigo.id === personagemAtualizado.id ?
                 personagemAtualizado : personagemAntigo
             )))
     }
 
-    function editaPersonagem(personagemEditado){
+    function editaPersonagem(personagemEditado) {
         setPersonagemEditado(personagemEditado);
     }
 
-    function salvaPersonagem(personagem){
-        if(personagemEditado){
+    function salvaPersonagem(personagem) {
+        if (personagemEditado) {
             alterarPersonagem(personagem)
         } else {
             addPersonagem(personagem)
-        } 
-        setPersonagemEditado(null);
+        }
+        setPersonagemEditado(null)
     }
 
-    console.log(JSON.stringify(personagens))
+    console.log(personagemEditado)
 
     return (
-        <FichaContext.Provider value={{ personagens, personagemEditado, addPersonagem, alterarPersonagem, editaPersonagem, salvaPersonagem }}>
+        <FichaContext.Provider value={{ personagens, personagemEditado, addPersonagem, alterarPersonagem, editaPersonagem, salvaPersonagem, setPersonagens }}>
             {children}
         </FichaContext.Provider>
     )

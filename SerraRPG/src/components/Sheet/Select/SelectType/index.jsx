@@ -24,7 +24,7 @@ export default function Select(props) {
     return (
         <div className={styles.container}>
             <label htmlFor={props.nome}>{props.nome}:</label>
-            <select id={props.nome} name={props.nome} className={styles.campo}  onChange={e => setEscolha(e.target.value)}>
+            <select id={props.nome} name={props.nome} className={styles.campo} onChange={e => setEscolha(e.target.value)} value={props.url == 'classes' ? (personagemEditado.classe || "") : (personagemEditado.raca || "")}>
                 {lista.map(item => (
                     <option key={item.index} value={item.index}>
                         {item.name}

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { FichaContext } from '../../contexts/SheetContext/FichaContext.jsx';
+import Modal from './Modal/index.jsx';
 import styles from './styles.module.css'
 import Atributos from './Atributos';
 import icone from '../../assets/iconePessoa.png'
@@ -8,33 +9,30 @@ import SelectType from './Select/SelectType/index.jsx';
 
 export default function Sheet(props) {
     const { personagemEditado, editaPersonagem } = useContext(FichaContext);
+    const [openModal, setOpenModal] = useState(false)
     const [nome, setNome] = useState("");
-    let imagem; 
 
-    function trocaFoto(){
-
+    function abrirModal() {
+        setOpenModal(true)
     }
-    
-    useEffect(()=> {
-        editaPersonagem({...personagemEditado, nome: nome});
-        console.log(nome);
-    },[nome])
 
-    useEffect(()=> {
-        editaPersonagem({...personagemEditado, characterImage: props.imagem});
-    }, [])
-
+    useEffect(() => {
+        if (personagemEditado.nome == "" || nome != "") { 
+            editaPersonagem({ ...personagemEditado, nome: nome }) 
+        }
+    }, [nome])
 
     return (
         <section className={styles.sheet}>
             <h1 className={styles.tipo}>Ficha de {props.tipoFicha}</h1>
             <div className={styles.informacoes}>
-                <Atributos/>
-
+                <Atributos />
                 <section className={styles.dados}>
-                    <img src={imagem || icone} alt="foto da ficha" onClick={trocafoto}/>
+                    <img src={personagemEditado.imagem || icone} alt="foto da ficha" />
+                    <button onClick={abrirModal}>Alterar imagem</button>
+                    <Modal isOpen={openModal} setOpenModal={() => setOpenModal(!openModal)} />
                     <label>Nome</label>
-                    <input onBlur={e => setNome(e.target.value)}/>
+                    <input onBlur={(e => setNome(e.target.value))} placeholder={personagemEditado.nome || nome}/>
                     <SelectType nome="Raça" tipo="raca" url="races" />
                     <SelectType nome="Classes" tipo="classe" url="classes" />
                 </section>
