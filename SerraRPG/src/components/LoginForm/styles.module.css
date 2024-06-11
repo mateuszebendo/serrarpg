@@ -47,4 +47,15 @@
     font-weight: bold;
 }
 
+@keyframes loading {
+    0%{rotate: 0deg;}
+    100%{rotate: 360deg;}
+}
+
+.loadingIcon {
+    animation-name: loading;
+    animation-duration: 3000ms;
+}
+
+
 

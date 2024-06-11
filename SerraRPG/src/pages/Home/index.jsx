@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import Navbar from '../../components/Navbar';
-import { loadFichas } from '../../contexts/SheetContext/dataBase';
 import  Login  from '../../components/LoginForm';
 import styles from './styles.module.css';
 import { AuthContext } from '../../contexts/auth';
@@ -21,7 +20,6 @@ export default function Home(){
         </div>
     );
    } else if(signed){
-    loadFichas();
     return(
         <>
         <Navbar />

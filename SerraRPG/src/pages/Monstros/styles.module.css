@@ -8,30 +8,34 @@ div h1{
     margin: 0.8rem;
 }
 
-.geral{
+.monsterContainer {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
-.itens{
+.monsterContent {
     display: flex;
     align-items: center;
     flex-direction: column;
     width: 30%;
     border-radius: 20px;
-    
     margin-top: 5rem;
-
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.opcoes{
+.monsterImageNButton {
     width: 100%;
     display: flex;
-    align-items: center;
-    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.monsterImage {
+    width: 500px;
+    height: 500px;
+    border-radius: 8px;
 }
 
 .descricao{
@@ -64,3 +68,17 @@ div h1{
     color: black;
     background-color: antiquewhite;
 }
+
+@keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .loadingIcon {
+    animation: rotate 2000ms linear infinite;
+  }
+

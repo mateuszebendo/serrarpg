@@ -12,34 +12,36 @@ export default function Sheet(props) {
     const [openModal, setOpenModal] = useState(false)
     const [nome, setNome] = useState("");
 
-    function abrirModal(){
+    function abrirModal() {
         setOpenModal(true)
     }
 
     useEffect(() => {
-        editaPersonagem({ ...personagemEditado, nome: nome });
+        if (personagemEditado.nome == "" || nome != "") { 
+            editaPersonagem({ ...personagemEditado, nome: nome }) 
+        }
     }, [nome])
 
     return (
         <section className={styles.sheet}>
-                    <h1 className={styles.tipo}>Ficha de {props.tipoFicha}</h1>
-                    <div className={styles.informacoes}>
-                        <Atributos />
-                        <section className={styles.dados}>
-                            <img src={personagemEditado.imagem || icone} alt="foto da ficha" />
-                            <button onClick={abrirModal}>Alterar imagem</button>
-                            <Modal isOpen={openModal} setOpenModal={() => setOpenModal(!openModal)}/>
-                            <label>Nome</label>
-                            <input onBlur={e => setNome(e.target.value)} />
-                            <SelectType nome="Raça" tipo="raca" url="races" />
-                            <SelectType nome="Classes" tipo="classe" url="classes" />
-                        </section>
-                    </div>
-                    <section>
-                        <h1 className={styles.tipo}>Inventario & Habilidades</h1>
-                        <Inventario nome="Inventário" label="Nome do Item " endpoint='equipment' />
-                        <Inventario nome="Feitiços" label="Nome do Feitiço " endpoint='spells' />
-                    </section>
+            <h1 className={styles.tipo}>Ficha de {props.tipoFicha}</h1>
+            <div className={styles.informacoes}>
+                <Atributos />
+                <section className={styles.dados}>
+                    <img src={personagemEditado.imagem || icone} alt="foto da ficha" />
+                    <button onClick={abrirModal}>Alterar imagem</button>
+                    <Modal isOpen={openModal} setOpenModal={() => setOpenModal(!openModal)} />
+                    <label>Nome</label>
+                    <input onBlur={(e => setNome(e.target.value))} placeholder={personagemEditado.nome || nome}/>
+                    <SelectType nome="Raça" tipo="raca" url="races" />
+                    <SelectType nome="Classes" tipo="classe" url="classes" />
+                </section>
+            </div>
+            <section>
+                <h1 className={styles.tipo}>Inventario & Habilidades</h1>
+                <Inventario nome="Inventário" label="Nome do Item " endpoint='equipment' />
+                <Inventario nome="Feitiços" label="Nome do Feitiço " endpoint='spells' />
+            </section>
         </section>
     );
 }

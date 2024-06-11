@@ -16,6 +16,8 @@ const apiAllById= axios.create({
     baseURL: 'https://www.dnd5eapi.co/'
 });
 
+
+
 export const getArmor = () => {
 
     const url = 'equipment-categories/armor';
@@ -37,10 +39,9 @@ export const getWeapons = () => {
         console.log('deu erro');
     }
 }
+export const getMagicItems = () => {
 
-export const getRules = () => {
-
-    const url = 'rule-sections';
+    const url = 'magic-items';
 
     try{
         return apiDnd.get(url);
@@ -49,10 +50,10 @@ export const getRules = () => {
     }
 }
 
-export const getRulesById = (id) => {
-    
-    const url = 'rule-sections/'+{id};
-    console.log(url);
+export const getRules = () => {
+
+    const url = 'rule-sections';
+
     try{
         return apiDnd.get(url);
     }catch{
@@ -107,6 +108,15 @@ export function getClassesSkills() {
 export function getAllById(url) {
     try {
         return apiAllById.get(url);
+    } catch (error) {
+        console.error('Erro ao obter dados de API:', error);
+    }
+}
+
+export function getMonsterList() {
+    const url ='monsters/';
+    try {
+        return apiDnd.get(url);
     } catch (error) {
         console.error('Erro ao obter dados de API:', error);
     }

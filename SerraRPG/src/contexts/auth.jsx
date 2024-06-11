@@ -1,6 +1,6 @@
 import React, { useState, createContext, useEffect } from 'react';
 import { auth, db } from '../services/Firebase/firebaseConnection';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateCurrentUser, updatePassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updatePassword } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
@@ -46,6 +46,7 @@ function AuthProvider({ children }) {
 
             await setDoc(doc(db, "users", uid), {
                 nome: newUser,
+                email: value.user.email,
             })
             .then(() => {
                 let data = {
@@ -86,7 +87,7 @@ function AuthProvider({ children }) {
             let data = {
                 uid: uid,
                     nome: docSnap.data().nome,
-                    email: value.user.email,
+                    email: value.user.email
             }
 
             setUser(data);
@@ -107,8 +108,29 @@ function AuthProvider({ children }) {
         setUser(null);
     }
 
-    async function alteraSenha(email, password, novaSenha) {
+    async function alteraSenha(newPassword) {
+        /* setLoadingAuth(true);
+        try {
+            if (auth.currentUser) {
+                await updatePassword(auth.currentUser, newPassword);
 
+                let data = {
+                    ...user,
+                };
+
+                setUser(data);
+                setLoadingAuth(false);
+                alert("Senha alterada com sucesso!");
+                navigate('/');
+            } else {
+                setLoadingAuth(false);
+                alert("Usuário não autenticado!");
+            }
+        } catch (error) {
+            console.log(error);
+            setLoadingAuth(false);
+            alert("Erro ao alterar a senha!");
+        } */
     }
 
     return(

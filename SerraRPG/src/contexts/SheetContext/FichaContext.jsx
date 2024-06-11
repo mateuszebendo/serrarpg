@@ -33,7 +33,7 @@ export default function FichaProvider({ children }) {
         setPersonagemEditado(null)
     }
 
-    console.log(personagens)
+    console.log(personagemEditado)
 
     return (
         <FichaContext.Provider value={{ personagens, personagemEditado, addPersonagem, alterarPersonagem, editaPersonagem, salvaPersonagem, setPersonagens }}>

@@ -12,12 +12,12 @@ function PasswordForgotForm() {
     const {alteraSenha, loadingAuth} =  useContext(AuthContext);
 
     async function handleNewPassword(e) {
-        e.preventDefault();
-        if (email && password) {
-            await alteraSenha(password, email);
+/*         e.preventDefault();
+        if(password !== '') {
+            await alteraSenha(password);
         } else {
             alert("Preencha todos os campos!");
-        }
+        } */
     }
 
     return(
