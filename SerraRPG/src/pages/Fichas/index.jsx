@@ -1,5 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { FichaContext } from '../../contexts/SheetContext/FichaContext';
+import { AuthContext } from '../../contexts/auth';
+import { v4 as uuid } from 'uuid';
+import { registraFichas } from '../../contexts/SheetContext/dataBase'
 import fichaJSON from '../../data/ficha.json'
 import Sheet from '../../components/Sheet';
 import Button from '../../components/Buttons';
@@ -7,40 +10,96 @@ import styles from './styles.module.css';
 import Navbar from '../../components/Navbar';
 
 export default function Fichas() {
-    const { personagemEditado, salvaPersonagem } = useContext(FichaContext);
-    const [ficha, setFicha] = useState(null);
 
-    function criaFicha(){
-        salvaPersonagem(fichaJSON);
-        // setFicha({personagemEditado})
+    const { personagemEditado, editaPersonagem } = useContext(FichaContext);
+    const [personagensAtuais, setPersonagensAtuais] = useState([]);
+    const { getStoredUser } = useContext(AuthContext);
+    const storedUser = getStoredUser();
+
+    useEffect(() => {
+        debugger
+        let storagePersonagens = JSON.parse(localStorage.getItem('@fichas'))
+        if (storagePersonagens) {
+            storagePersonagens = Object.entries(storagePersonagens)
+            setPersonagensAtuais(storagePersonagens);
+        }
+    }, [])
+
+    useEffect(() => {
+        if (personagemEditado && !personagensAtuais.some(ficha => ficha.fichaId === personagemEditado.fichaId)) {
+            setPersonagensAtuais([...personagensAtuais, personagemEditado]);
+        }
+    }, [personagemEditado, personagensAtuais]);
+
+    function trocaFicha(id) {
+        const fichaEscolhida = personagensAtuais.find(ficha => ficha.fichaId === id);
+        editaPersonagem(fichaEscolhida);
+    }
+
+    function criaFicha() {
+        const novoPersonagem = {
+            fichaId: uuid(),
+            usuario: storedUser.nome,
+            userId: storedUser.uid,
+            ...fichaJSON
+        }
+        editaPersonagem(novoPersonagem);
+    }
+
+    function salvaFichas() {
+        registraFichas(personagensAtuais);
     }
 
     function handleSubmit() {
-        salvaPersonagem(ficha);
+        let resultadoPesquisa = personagensAtuais.find(ficha => personagemEditado.fichaId === ficha.fichaId);
+
+        if (!resultadoPesquisa) {
+            setPersonagensAtuais([...personagensAtuais, personagemEditado]);
+        } else {
+            setPersonagensAtuais(personagensAtuais.map(ficha =>
+                ficha.fichaId === personagemEditado.fichaId ? personagemEditado : ficha
+            ));
+        }
+
     }
 
-    console.log(personagemEditado)
+
+    console.log("FICHAS ATUAIS: " + JSON.stringify(personagensAtuais));
+
+    console.log("FICHA EM CONTEXTO: \n" + JSON.stringify(personagemEditado))
+
 
     return (
         <>
             <Navbar />
             <section className={styles.geral}>
-                <div className={styles.itens}>
-                    <h1>Minhas Fichas</h1>
-                    <div className={styles.opcoes}>
-                        <Button title='Criar ficha' onClick={criaFicha}/>
+                <div className={styles.fichas}>
+                    <div className={styles.itens}>
+                        <h1>Minhas Fichas</h1>
+                        <div className={styles.opcoes}>
+                            {personagensAtuais.length > 0 ? (
+                                personagensAtuais.map((ficha) => (
+                                    <Button key={ficha.fichaId} id={ficha.fichaId} title={ficha.nome || ficha.fichaId} onClick={trocaFicha} />
+                                ))) :
+                                <h1>Nenhuma ficha encontrada!</h1>
+                            }
+                            <Button title='Criar ficha' onClick={criaFicha} />
+                        </div>
+                        <br />
                     </div>
-                    <br />
+                    <Button title='Salvar fichas' className={styles.salvarFicha} onClick={salvaFichas} />
                 </div>
-                <form className={styles.container} onSubmit={handleSubmit}>
-                    {ficha ? 
-                    <div>
-                    <Sheet tipoFicha="Personagem" imagem="https://cdn.oneesports.gg/cdn-data/2023/05/Anime_OshinoKo_HoshinoAi_Disguise_Wallpaper.jpg" />
-                    <button type="submit">Salvar</button>
-                    </div>
-                     : <h1>Nenhuma ficha encontrada!</h1>}
-                     
-                </form>
+                <div className={styles.container} >
+                    {personagemEditado ?
+                        <div className={styles.campoFicha}>
+                            <Sheet tipoFicha="Personagem" />
+                            <button onClick={handleSubmit} className={styles.salvar}>Salvar</button>
+                        </div>
+                        : <figure className={styles.sozinho}>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Toothless-dancing-toothless.gif" alt="dragao fofo" />
+                            <h1>Nenhuma ficha encontrada...</h1>
+                        </figure>}
+                </div>
             </section>
         </>
     );

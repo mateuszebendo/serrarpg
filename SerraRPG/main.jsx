@@ -9,12 +9,12 @@ import FichaProvider from './src/contexts/SheetContext/FichaContext';
 ReactDOM.createRoot(document.getElementById('root')).
   render(
     <React.StrictMode>
-      <FichaProvider>
-        <BrowserRouter>
-          <AuthProvider>
+      <BrowserRouter>
+        <AuthProvider>
+          <FichaProvider>
             <RoutesApp />
-          </AuthProvider>
-        </BrowserRouter>
-      </FichaProvider>
+          </FichaProvider>
+        </AuthProvider>
+      </BrowserRouter>
     </React.StrictMode>
   )
