@@ -47,4 +47,10 @@
     font-weight: bold;
 }
 
+.success, .error {
+    color: antiquewhite;
+    font-family: Vecna;
+    text-align: center;
+}
+
 

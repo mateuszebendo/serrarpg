@@ -1,6 +1,6 @@
 import React, { useState, createContext, useEffect } from 'react';
 import { auth, db } from '../services/Firebase/firebaseConnection';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updatePassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
@@ -66,6 +66,7 @@ function AuthProvider({ children }) {
         })
         .catch((error) => {
             console.log(error);
+            alert("Sua senha deve ter 6 caracteres ou mais, Mestre!");
             setLoadingAuth(false);
         })
     }
@@ -108,31 +109,6 @@ function AuthProvider({ children }) {
         setUser(null);
     }
 
-    async function alteraSenha(newPassword) {
-        /* setLoadingAuth(true);
-        try {
-            if (auth.currentUser) {
-                await updatePassword(auth.currentUser, newPassword);
-
-                let data = {
-                    ...user,
-                };
-
-                setUser(data);
-                setLoadingAuth(false);
-                alert("Senha alterada com sucesso!");
-                navigate('/');
-            } else {
-                setLoadingAuth(false);
-                alert("Usuário não autenticado!");
-            }
-        } catch (error) {
-            console.log(error);
-            setLoadingAuth(false);
-            alert("Erro ao alterar a senha!");
-        } */
-    }
-
     return(
         <AuthContext.Provider value={{
             signed: !!user,
@@ -140,7 +116,6 @@ function AuthProvider({ children }) {
             logar,
             cadastrar,
             logout,
-            alteraSenha,
             loadingAuth,
             loading,
             storageUser,
