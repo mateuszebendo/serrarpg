@@ -16,6 +16,14 @@ function CadastroForm() {
 
     const {cadastrar, loadingAuth} = useContext(AuthContext);
 
+    useEffect(() => {
+        if(popupError) {
+            setTimeout(() => {
+                setPopupError(false)
+            }, 4000);
+        }
+    }, [popupError]);
+
     async function handleCadastrar(e) {
         e.preventDefault();
 
@@ -25,14 +33,6 @@ function CadastroForm() {
             setPopupError(true)
         }
     }
-
-    useEffect(() => {
-        if(popupError) {
-            setTimeout(() => {
-                setPopupError(false)
-            }, 4000);
-        }
-    }, [popupError])
 
     return(
         <div className={styles.formContainer}>

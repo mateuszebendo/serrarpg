@@ -4,12 +4,14 @@ import  Input  from '../Input';
 import {Link} from 'react-router-dom';
 import { AuthContext } from '../../contexts/auth';
 import SignIn from '../Buttons';
+import Popup from '../Popup';
 import styles from './styles.module.css';
 
 function Login() {
     const[email, setEmail] = useState('');
     const[password, setPassword] = useState('');
     const[check, setCheck] = useState(false);
+    const[popupError, setPopupError] = useState(false);
     const { logar, loadingAuth} = useContext(AuthContext);
 
     useEffect(() => {
@@ -20,11 +22,21 @@ function Login() {
         }
     }, []);
 
+    useEffect(() => {
+        if(popupError) {
+            setTimeout(() => {
+                setPopupError(false)
+            }, 4000);
+        }
+    }, [popupError]);
+
     async function handleLogar(e) {
         e.preventDefault();
 
         if(email !== '' && password !== '') {
             await logar(email, password);
+        } else {
+            setPopupError(true)
         }
     }
 
@@ -70,7 +82,9 @@ function Login() {
                 <SignIn title={loadingAuth ? <AiOutlineLoading3Quarters className={styles.loadingIcon}/> : 'Entrar'} type="Submit" />
                 <span className={styles.spanContent}>Não tem uma conta? <Link className={styles.linkContent} to="/cadastro">Inscteva-se</Link></span>
             </form>
-
+            {
+                popupError? <Popup message={"Calma lá mestre!  Todos os campos devem ser preenchidos para entrar na sua conta de aventureiro."}></Popup> : null
+            }
         </div>
     );
 }
