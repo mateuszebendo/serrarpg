@@ -24,7 +24,7 @@ export default function Habilidades(){
         const results = await getClassesSkills();
         setList(results.data.results);
         setFilteredList(results.data.results);
-        setCardType("classesSkills")
+        setCardType("features")
         }
 
         function pesquisa() {
@@ -55,7 +55,7 @@ export default function Habilidades(){
                     filteredList.length > 0 ?
                         filteredList.map((index) => {
                             switch(cardType){
-                            case "classesSkills":
+                            case "features":
                                 return <Card key={index} title={index} cardType={cardType} firstLine={"Classe: "} secondLine={"Nível: "} thirdLine={"Descrição: "}/>
                             case "spells":
                                 return <Card key={index} title={index} cardType={cardType} firstLine={"Nível: "} secondLine={"Descrição: "} thirdLine={"Tipo de magia: "}/>
