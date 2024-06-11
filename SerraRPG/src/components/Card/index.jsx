@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 import { FaAnglesDown } from "react-icons/fa6";
 import { getAllById } from "../../services/DndApi/api";
 
-const Card = ({ title, firstLine, secondLine, thirdLine }) => {
+const Card = ({ title, cardType, firstLine, secondLine, thirdLine }) => {
   // const[features, setFeatures] = useState({});
   let features = {};
   const [firstStats, setFirstStats] = useState('');
@@ -17,32 +17,46 @@ const Card = ({ title, firstLine, secondLine, thirdLine }) => {
     // setFeatures(results.data);
     features = results.data;
 
-    if (title.url.includes("spells") && features !== undefined) {
-      setFirstStats(JSON.stringify(features.level))
-      setSecondStats(features.desc)
-      setThirdStats(JSON.stringify(features.school.name));
-    } else if (title.url.includes("features") && features !== undefined) {
-      setFirstStats(JSON.stringify(features.class.name))
-      setSecondStats(JSON.stringify(features.level))
-      setThirdStats(features.desc)
-    } else if (features.equipment_category.url.includes("armor") && features !== undefined) {
-      setFirstStats(JSON.stringify(features.armor_category))
-      setSecondStats(JSON.stringify(features.armor_class.base))
-      setThirdStats(JSON.stringify(features.weight))
-    } else if (title.url.includes("rule") && features !== undefined) {
-      setFirstStats(JSON.parse(features.desc))
-      setSecondStats()
-      setThirdStats()
-    } else if (title.url.includes("magic") && features !== undefined) {
-      setFirstStats(JSON.stringify(features.equipment_category.name))
-      setSecondStats(JSON.stringify(features.rarity.name))
-      setThirdStats(features.desc)
-    } else if (features.equipment_category.url.includes("weapon") && features !== undefined) {
-      setFirstStats(JSON.stringify(features.weapon_range))
-      setSecondStats(JSON.stringify(features.damage.damage_dice))
-      setThirdStats(JSON.stringify(features.weight))
+    switch (cardType) {
+      case "spells":
+        setFirstStats(JSON.stringify(features.level))
+        setSecondStats(features.desc)
+        setThirdStats(JSON.stringify(features.school.name));
+        break
+
+      case "features":
+        setFirstStats(JSON.stringify(features.class.name))
+        setSecondStats(JSON.stringify(features.level))
+        setThirdStats(features.desc)
+        break
+
+      case "weapon":
+        setFirstStats(JSON.stringify(features.weapon_range))
+        setSecondStats(JSON.stringify(features.damage.damage_dice))
+        setThirdStats(JSON.stringify(features.weight))
+        break
+
+      case "armor":
+        setFirstStats(JSON.stringify(features.armor_category))
+        setSecondStats(JSON.stringify(features.armor_class.base))
+        setThirdStats(JSON.stringify(features.weight))
+        break
+
+      case "magic":
+        setFirstStats(JSON.stringify(features.equipment_category.name))
+        setSecondStats(JSON.stringify(features.rarity.name))
+        setThirdStats(features.desc)
+        break
+
+      case "rule":
+        setFirstStats(features.desc)
+        setSecondStats()
+        setThirdStats()
+        break
     }
   }
+
+  //console.log(title)
 
   useEffect(() => {
     getAllId()

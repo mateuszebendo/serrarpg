@@ -14,34 +14,33 @@ export default function Itens() {
     const [filteredList, setFilteredList] = useState([]);
 
     async function getWeaponApi() {
-
         const results = await getWeapons();
+        setCardType("weapons");
+
         setList(results.data.equipment);
         setFilteredList(results.data.equipment);
-        setCardType("weapons");
     }
     async function getMagicItemsApi() {
-
         const results = await getMagicItems();
+        setCardType("magic");
+
         setList(results.data.results);
         setFilteredList(results.data.results);
-        setCardType("magic");
     }
 
     async function getArmorApi() {
-
         const results = await getArmor();
+        setCardType("armor");
+
         setList(results.data.equipment);
         setFilteredList(results.data.equipment);
-        setCardType("armor");
-        }
+    }
     async function getRulesApi() {
-
         const results = await getRules();
-        console.log(results)
+        setCardType("rules");
+
         setList(results.data.results);
         setFilteredList(results.data.results);
-        setCardType("rules");
     }
 
     function pesquisa() {
@@ -53,6 +52,7 @@ export default function Itens() {
         pesquisa()
     }, [search])
 
+    
 
     return (
         <>
@@ -75,7 +75,16 @@ export default function Itens() {
                         {
                             filteredList.length > 0 ?
                                 filteredList.map((index) => {
-                                    return cardType == "weapons" ? <Card key={index} title={index} firstLine={"Alcance: "} secondLine={"Dano: "} thirdLine={"Peso: "} /> : cardType == "armor" ? <Card key={index} title={index} firstLine={"Tipo: "} secondLine={"Classe: "} thirdLine={"Peso: "} /> : cardType == "magic" ? <Card key={index} title={index} firstLine={"Categoria: "} secondLine={"Raridade: "} thirdLine={"Descrição: "} /> : <Card key={index} title={index} firstLine={"Descrição: "} />
+                                    switch (cardType) {
+                                        case "weapons":
+                                            return <Card key={index} title={index} cardType={cardType} firstLine={"Alcance: "} secondLine={"Dano: "} thirdLine={"Peso: "} />
+                                        case "armor":
+                                            return <Card key={index} title={index} cardType={cardType} firstLine={"Tipo: "} secondLine={"Classe: "} thirdLine={"Peso: "} />
+                                        case "magic":
+                                            return <Card key={index} title={index} cardType={cardType} firstLine={"Categoria: "} secondLine={"Raridade: "} thirdLine={"Descrição: "} />
+                                        case "rules":
+                                            return <Card key={index} title={index} cardType={cardType} firstLine={"Descrição: "} />
+                                    }
                                 })
                                 : <p>Escolha uma opção</p>
                         }
