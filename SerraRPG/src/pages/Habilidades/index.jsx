@@ -2,11 +2,9 @@ import React from 'react';
 import style from "./styles.module.css";
 import Navbar from "../../components/Navbar";
 import Button from "../../components/Buttons";
-import Searchbar from "../../components/SearchBar";
 import Card from "../../components/Card"
 import { getSpells, getClassesSkills } from "../../services/DndApi/api";
 import { useState, useEffect } from 'react';
-import { get, set } from 'firebase/database';
 import SearchBar from '../../components/SearchBar';
 
 export default function Habilidades(){
@@ -56,9 +54,14 @@ export default function Habilidades(){
                     {
                     filteredList.length > 0 ?
                         filteredList.map((index) => {
-                                return cardType == "classesSkills"? <Card key={index} title={index} firstLine={"Classe: "} secondLine={"Nível: "} thirdLine={"Descrição: "}/> : <Card key={index} title={index} firstLine={"Nível: "} secondLine={"Descrição: "} thirdLine={"Tipo de magia: "}/>
+                            switch(cardType){
+                            case "classesSkills":
+                                return <Card key={index} title={index} cardType={cardType} firstLine={"Classe: "} secondLine={"Nível: "} thirdLine={"Descrição: "}/>
+                            case "spells":
+                                return <Card key={index} title={index} cardType={cardType} firstLine={"Nível: "} secondLine={"Descrição: "} thirdLine={"Tipo de magia: "}/>
+                            }
                         })
-                     : <p>Escolha uma opção</p>
+                    : <p>Escolha uma opção</p>
                     }
                     </div>
                 </div>
