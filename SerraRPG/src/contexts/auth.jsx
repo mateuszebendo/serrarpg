@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 export const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState(null);
     const [loadingAuth, setLoadingAuth] = useState(false);
     const [loading, setLoading] = useState(true);
 
@@ -66,7 +66,6 @@ function AuthProvider({ children }) {
         })
         .catch((error) => {
             console.log(error);
-            alert("Sua senha deve ter 6 caracteres ou mais, Mestre!");
             setLoadingAuth(false);
         })
     }
